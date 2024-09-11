@@ -100,35 +100,3 @@ class GRIPDataLoader(DataLoader):
         return object_frame_feature, neighbor_matrix, m_xy
 
 
-
-
-
-
-        # now_adjacency = self.graph.get_adjacency(all_adjacency_list)
-        # now_A = self.graph.normalize_adjacency(now_adjacency)
-        #
-        # _ori_data, A, mean_xy = all_feature_list, np.array([now_A]), all_mean_list
-        # ori_data = torch.from_numpy(_ori_data).cuda()
-        # A = torch.from_numpy(A).cuda()
-        #
-        # feature_id = [3, 4, 9, 10]
-        # no_norm_loc_data = ori_data[:, feature_id]
-        # data = no_norm_loc_data.clone()
-        #
-        # new_mask = (data[:, :2, 1:] != 0) * (data[:, :2, :-1] != 0)
-        # data[:, :2, 1:] = (data[:, :2, 1:] - data[:, :2, :-1]).float() * new_mask.float()
-        # data[:, :2, 0] = 0
-        # # # small vehicle: 1, big vehicles: 2, pedestrian 3, bicycle: 4, others: 5
-        # object_type = ori_data[:, 2:3]
-        # data = data.float().to(self.dev)
-        # no_norm_loc_data = no_norm_loc_data.float().to(self.dev)
-        # object_type = object_type.to(self.dev)  # type
-        # data[:, :2] = data[:, :2] / rescale_xy
-        # # result: data, no_norm_loc_data, object_type (function main.py:preprocess_data)
-        #
-        # _input_data = data[:, :, :self.obs_length, :]  # (N, C, T, V)=(N, 4, 6, 120)
-        # output_loc_GT = data[:, :2, self.obs_length:, :]  # (N, C, T, V)=(N, 2, 6, 120)
-        # output_mask = data[:, -1:, self.obs_length:, :]  # (N, C, T, V)=(N, 1, 6, 120)
-        # A = A.float().to(self.dev)
-        #
-        # return _input_data, A, _ori_data, mean_xy, rescale_xy, no_norm_loc_data, output_loc_GT, output_mask, obj_index
